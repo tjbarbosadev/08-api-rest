@@ -11,5 +11,8 @@
   "description": "Criando API REST com node.js",
   "devDependencies": {
     "tsx": "^4.16.2"
+  },
+  "dependencies": {
+    "typescript": "^5.9.3"
   }
 }
