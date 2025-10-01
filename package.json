@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "tsx watch src/server.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "Criando API REST com node.js"
+  "description": "Criando API REST com node.js",
+  "devDependencies": {
+    "tsx": "^4.16.2"
+  }
 }
