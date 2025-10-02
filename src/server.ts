@@ -1,10 +1,11 @@
 import express from 'express';
-import { execArgv } from 'process';
+import { myMiddleware } from './middlewares/myMiddleware';
 
 const PORT = 3333;
 
 const app = express();
 app.use(express.json());
+// app.use(myMiddleware);
 
 app.get('/route/:id/:user', (req, res) => {
   console.log(req.params);
@@ -16,9 +17,9 @@ app.get('/query', (req, res) => {
   res.json(req.query);
 });
 
-app.post('/products', (req, res) => {
-  console.log(req.body);
-  res.json(req.body);
+app.post('/products', myMiddleware, (req, res) => {
+  const { name, price } = req.body;
+  res.json({ name, price, user_id: req.user_id });
 });
 
 app.get('/', (req, res) => {
