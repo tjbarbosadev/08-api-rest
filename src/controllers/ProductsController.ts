@@ -1,7 +1,9 @@
 import { Request, Response } from 'express';
+import { AppError } from '../utils/AppError';
 
 export class ProductsController {
   /**
+   * Umm controller deve ter no máximo esses 5 métodos
    * index - GET para listar vários registros
    * show - GET para exibir um registro específico
    * create - POST para criar um registro
@@ -16,6 +18,10 @@ export class ProductsController {
 
   create(req: Request, res: Response) {
     const { name, price } = req.body;
-    res.json({ name, price, user_id: req.user_id });
+
+    if (!name || !price)
+      throw new AppError('Nome e preço do produto são obrigatórios');
+
+    res.status(201).json({ name, price, user_id: req.user_id });
   }
 }
